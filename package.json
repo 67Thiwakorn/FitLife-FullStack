@@ -1,0 +1,34 @@
+{
+  "name": "fitlife-fullstack",
+  "version": "1.0.0",
+  "description": "FullStack Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/67Thiwakorn/FitLife-FullStack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/67Thiwakorn/FitLife-FullStack/issues"
+  },
+  "homepage": "https://github.com/67Thiwakorn/FitLife-FullStack#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "dotenv": "^17.3.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
