@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fitness System</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/">Home</a>
+  <a href="/users">Users</a>
+  <a href="/packages">Packages</a>
+  <a href="/classes">Classes</a>
+  <a href="/enrollments">Enrollments</a>
+  <a href="/reports/members-in-class">Report 1</a>
+  <a href="/reports/member-schedule">Report 2</a>
+</nav>
+
+<div class="container">
+
+<% if(success.length > 0) { %>
+  <div class="alert success"><%= success %></div>
+<% } %>

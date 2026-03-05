@@ -1,35 +1,24 @@
 require('dotenv').config();
 const express = require('express');
-const session = require('express-session');
-const flash = require('connect-flash');
-const methodOverride = require('method-override');
-const path = require('path');
-
 const app = express();
 
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'public')));
+const db = require('./models');
 
-app.use(session({
-  secret: 'fitness-secret',
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(express.json());
 
-app.use(flash());
+// Routes
+const userRoutes = require('./routes/userRoutes');
+const classRoutes = require('./routes/classRoutes');
+const enrollmentRoutes = require('./routes/enrollmentRoutes');
 
-app.use((req, res, next) => {
-  res.locals.success = req.flash('success');
-  res.locals.error = req.flash('error');
-  next();
-});
+app.use('/users', userRoutes);
+app.use('/classes', classRoutes);
+app.use('/enrollments', enrollmentRoutes);
 
-app.get('/', (req, res) => {
-  res.render('home');
-});
+const PORT = 3000;
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+db.sequelize.sync().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
 });

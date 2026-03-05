@@ -15,7 +15,20 @@ db.Class = require('./Class')(sequelize, Sequelize);
 db.Enrollment = require('./Enrollment')(sequelize, Sequelize);
 
 // Associations
-db.User.belongsToMany(db.Class, { through: db.Enrollment });
-db.Class.belongsToMany(db.User, { through: db.Enrollment });
+db.User.belongsToMany(db.Class, {
+  through: db.Enrollment,
+  foreignKey: 'userId'
+});
+
+db.Class.belongsToMany(db.User, {
+  through: db.Enrollment,
+  foreignKey: 'classId'
+});
+
+db.User.hasMany(db.Enrollment, { foreignKey: 'userId' });
+db.Class.hasMany(db.Enrollment, { foreignKey: 'classId' });
+
+db.Enrollment.belongsTo(db.User, { foreignKey: 'userId' });
+db.Enrollment.belongsTo(db.Class, { foreignKey: 'classId' });
 
 module.exports = db;
